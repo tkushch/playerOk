@@ -2,6 +2,8 @@ package com.example.playerok;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActionBar;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,6 +17,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.w3c.dom.Text;
+
+import static android.graphics.Color.*;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -39,12 +43,14 @@ public class MainActivity extends AppCompatActivity {
                 "onCreate", Toast.LENGTH_SHORT);
         toast.show();
 
+
     }
 
 
     public void run(View view) {
         if (!ispaused) {
             mp.start();
+            b1.setBackgroundColor(Color.RED);
         }
     }
 
@@ -52,12 +58,21 @@ public class MainActivity extends AppCompatActivity {
         if (ispaused) {
             ispaused = false;
             mp.start();
-            b2.setTag("Resume");
+            b2.setText("Pause");
+
+            Toast toastresumed = Toast.makeText(this,
+                    "resumed", Toast.LENGTH_SHORT);
+
+            toastresumed.show();
         } else {
             ispaused = true;
             mp.pause();
-            b2.setTag("Pause");
+            b2.setText("Resume");
+            Toast toastpaused = Toast.makeText(this,
+                    "paused", Toast.LENGTH_SHORT);
+            toastpaused.show();
         }
+
 
 
     }
