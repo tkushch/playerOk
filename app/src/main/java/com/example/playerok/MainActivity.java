@@ -21,12 +21,16 @@ import org.w3c.dom.Text;
 import static android.graphics.Color.*;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SeekBar.OnCreateContextMenuListener, SeekBar.OnSeekBarChangeListener {
     private static Button b1, b2;
     private static MediaPlayer mp;
     private static TextView namesong;
     private static Boolean need = false;
     private static Boolean ispaused = false;
+
+
+    private SeekBar sb;
+
 
 
     @Override
@@ -42,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
         Toast toast = Toast.makeText(this,
                 "onCreate", Toast.LENGTH_SHORT);
         toast.show();
+
+        sb = findViewById(R.id.seekBar);
+        sb.setOnSeekBarChangeListener(this);
 
 
     }
@@ -74,6 +81,21 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
+
+    }
+
+    @Override
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+    }
+
+    @Override
+    public void onStartTrackingTouch(SeekBar seekBar) {
+
+    }
+
+    @Override
+    public void onStopTrackingTouch(SeekBar seekBar) {
 
     }
 }
